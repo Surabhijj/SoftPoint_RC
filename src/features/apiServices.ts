@@ -65,17 +65,13 @@ export const submitPhoneNumber = async (phone: string, countryId: string) => {
 
   try {
     const response = await fetch(
-      `https://sandbox-api.softpoint.io/interface/v1/challenges/two_factor_auth`,
+      `https://sandbox-api.softpoint.io/interface/v1/challenges/two_factor_auth?phone_number=${cleanedPhone}&country_id=${countryId}`,
       {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          phone_number: cleanedPhone,
-          country_id: countryId,
-        }),
       }
     );
 
